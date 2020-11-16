@@ -3,6 +3,8 @@ import VideoPlayer from './modules/playVideo';
 import MiniSlider from './modules/slider/slider-mini';
 import Difference from './modules/differences';
 import Form from './modules/forms';
+import Accordion from './modules/accordion';
+import Download from './modules/download';
 
 window.addEventListener("DOMContentLoaded", () => {
     const mainSlider = new MainSlider({container: '.page', btns:'.next'});
@@ -14,9 +16,6 @@ window.addEventListener("DOMContentLoaded", () => {
         next: '.nextmodule', 
         prev: '.prevmodule'});
     mainPageSlider.render();
-
-    const player = new VideoPlayer('.showup .play', '.overlay');
-    player.init();
 
     const showUpSlider = new MiniSlider({
         container: '.showup__content-slider',
@@ -45,10 +44,17 @@ window.addEventListener("DOMContentLoaded", () => {
     });
     feedSlider.init();
 
-    const oldOfficer = new Difference('.officerold', '.officer__card-item');
-    oldOfficer.init();
-    const newOfficer = new Difference('.officernew', '.officer__card-item');
-    newOfficer.init();
+    new Difference('.officerold', '.officer__card-item').init();
+
+    new Difference('.officernew', '.officer__card-item').init();
 
     new Form('.form', 'assets/question.php').init();
+
+    new Accordion('.plus .plus__content', '.msg').init();
+
+    new VideoPlayer('.showup .play', '.overlay').init();
+
+    new VideoPlayer('.module__video-item .play', '.overlay').init();
+
+    new Download('.download').init();
 });
